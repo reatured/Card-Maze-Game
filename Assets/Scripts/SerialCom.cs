@@ -5,10 +5,10 @@ using System.Collections;
 using System.IO.Ports;
 using System.Threading;
 
-public class SimpleSerial : MonoBehaviour
+public class SerialCom : MonoBehaviour
 {
-
-    public String portName = "/dev/cu.usbmodem2101";  // use the port name for your Arduino, such as /dev/tty.usbmodem1411 for Mac or COM3 for PC
+    public String portName = "/dev/cu.usbmodem101";  // use the port name for your Arduino, such as /dev/tty.usbmodem1411 for Mac or COM3 for PC
+    public GameObject Player;
 
     private SerialPort serialPort = null; 
     private int baudRate = 115200;  // match your rate from your serial in Arduino
@@ -59,6 +59,7 @@ public class SimpleSerial : MonoBehaviour
     {
         if (serialInput != null)
         {
+            Debug.Log(serialInput);
             string[] strEul = serialInput.Split(';');  // parses using semicolon ; into a string array called strEul. I originally was sending Euler angles for gyroscopes
             if (strEul.Length == 2) // only uses the parsed data if every input expected has been received. In this case, 2 inputs consisting of a button (0 or 1) and an analog values between 0 and 1023
             {
@@ -72,6 +73,16 @@ public class SimpleSerial : MonoBehaviour
                    
 
                 }
+                float readout = float.Parse(strEul[0]);
+                readout = Mathf.Clamp(readout, 200f, 824f);
+                readout = map(readout, 200f, 824f, -4f, 4f);
+                //flip y
+                readout *= -1f;
+
+                // Vector3 cPos = leftPaddle.transform.position;
+                // cPos = new Vector3(cPos.x, readout, cPos.z);
+                // leftPaddle.transform.position = cPos;
+                // Debug.Log(serialInput);
             }
         }
     }
