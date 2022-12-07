@@ -504,8 +504,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb11e2d255e241068177e8dc35995c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portName: /dev/cu.usbmodem2101
-  leftPaddle: {fileID: 0}
+  portName: /dev/cu.usbmodem101
+  Player: {fileID: 0}
 --- !u!1001 &212730766
 PrefabInstance:
   m_ObjectHideFlags: 0
