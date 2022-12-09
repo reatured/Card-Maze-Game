@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
             Vector2 inputDirection = context.ReadValue<Vector2>();
             moveDirection = new Vector3(inputDirection.x, 0, inputDirection.y);
             moveDirection = -moveDirection.normalized;
-            print(moveDirection);
+            // print(moveDirection);
 
             startWalk(moveDirection);
         }
@@ -67,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
         int z = (int)(targetPos.z - transform.position.z);
         targetPos = transform.position + new Vector3(x, 0, z);
 
+        print(moveDirVec);
         canWalk = true;
     }
 
