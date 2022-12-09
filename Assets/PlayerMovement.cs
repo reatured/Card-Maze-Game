@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
             moveDirection = -moveDirection.normalized;
             print(moveDirection);
 
-            startWalk();
+            startWalk(moveDirection);
         }
         //print(context.ReadValue<Vector2>());
     }
@@ -52,11 +52,11 @@ public class PlayerMovement : MonoBehaviour
     private float startTime;
     public float stepTime = 1f;
 
-    public void startWalk()
+    public void startWalk(Vector3 moveDirVec)
     {
         startTime = Time.time;
         startPos = transform.position; 
-        Ray ray = new Ray(transform.position, moveDirection);
+        Ray ray = new Ray(transform.position, moveDirVec);
         RaycastHit hit; 
         if (Physics.Raycast(ray, out hit))
         {
