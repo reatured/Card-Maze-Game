@@ -89,5 +89,6 @@ public class PlayerMovement : MonoBehaviour
     public void endWalk()
     {
         canWalk = false;
+        ScoreScript.counter = true;
     }
 }
