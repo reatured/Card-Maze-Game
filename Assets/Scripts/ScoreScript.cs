@@ -20,7 +20,7 @@ public class ScoreScript : MonoBehaviour
         posY = transform.position.y;
         posZ = transform.position.z;
 
-        resetScore();
+        resetPos();
     }
 
     // Update is called once per frame
@@ -40,7 +40,11 @@ public class ScoreScript : MonoBehaviour
         }
     }
 
-    void resetScore(){
+    void resetPos(){
         transform.position = startPos;
+    }
+
+    public void resetScore(){
+        scoreValue = 0;
     }
 }

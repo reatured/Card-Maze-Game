@@ -10,13 +10,15 @@ public class PlayerMovement : MonoBehaviour
     public PlayerInput input;
     public Transform startingPos;
     private bool canWalk = false;
+    public GameObject score;
+    private ScoreScript scoreScript;
     Vector3 moveDirection;
 
     // Start is called before the first frame update
     void Start()
     {
         transform.position = startingPos.position; 
-
+        scoreScript = score.GetComponent<ScoreScript>(); 
 
     }
 
@@ -26,6 +28,11 @@ public class PlayerMovement : MonoBehaviour
         if (canWalk)
         {
             onWalking();
+        }
+
+        if (Input.GetKeyDown("r")){
+            scoreScript.resetScore();
+            transform.position = startingPos.position;
         }
     }
 
