@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement; 
 
 public class GameUI : MonoBehaviour
 {
@@ -12,6 +13,11 @@ public class GameUI : MonoBehaviour
         for (int i = 0; i < gameScriptsToBeEnabled.Length; i++)
         {
             gameScriptsToBeEnabled[i].SetActive(false);
+        }
+
+        for (int i = 0; i < winMenuItems.Length; i++)
+        {
+            winMenuItems[i].SetActive(false);
         }
     }
 
@@ -35,10 +41,11 @@ public class GameUI : MonoBehaviour
         }
 
         for(int i = 0; i < gameScriptsToBeEnabled.Length; i++)
-        {
+        { 
             gameScriptsToBeEnabled[i].SetActive(true);
         }
         startingGameState = true;
+        print("start game");
     }
 
     public Volume menuEffectVolume;
@@ -108,5 +115,10 @@ public class GameUI : MonoBehaviour
     {
         switchToGameCamera(false);
         winningState = false;
+    }
+
+    public void nextLevel(int index)
+    {
+        SceneManager.LoadScene(index);
     }
 }
