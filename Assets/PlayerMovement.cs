@@ -17,9 +17,14 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = startingPos.position; 
+        
         scoreScript = score.GetComponent<ScoreScript>(); 
 
+    }
+
+    public void resetGame()
+    {
+        transform.position = startingPos.position;
     }
 
     // Update is called once per frame
@@ -74,7 +79,6 @@ public class PlayerMovement : MonoBehaviour
         int z = (int)(targetPos.z - transform.position.z);
         targetPos = transform.position + new Vector3(x, 0, z);
 
-        print(moveDirVec);
         canWalk = true;
     }
 
