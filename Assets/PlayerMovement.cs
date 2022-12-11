@@ -22,11 +22,6 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    public void resetGame()
-    {
-        transform.position = startingPos.position;
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -39,6 +34,11 @@ public class PlayerMovement : MonoBehaviour
             scoreScript.resetScore();
             transform.position = startingPos.position;
         }
+    }
+
+    public void resetGame()
+    {
+        transform.position = startingPos.position;
     }
 
     public void OnMove()

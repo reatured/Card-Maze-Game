@@ -9,6 +9,8 @@ public class SerialCom : MonoBehaviour
 {
     public String portName = "/dev/cu.usbmodem101";  // use the port name for your Arduino, such as /dev/tty.usbmodem1411 for Mac or COM3 for PC
     public GameObject Player;
+    public GameObject Score;
+    private ScoreScript scoreScript;
     private PlayerMovement script;
     private int curIndex;
 
@@ -41,6 +43,7 @@ public class SerialCom : MonoBehaviour
         thread.Start();
 
         script = Player.GetComponent<PlayerMovement>();
+        scoreScript = Score.GetComponent<ScoreScript>();
     }
 
     void ProcessData()
@@ -95,7 +98,8 @@ public class SerialCom : MonoBehaviour
                     script.startWalk(new Vector3(1, 0, 0));
                 } else if(curIndex == 5)
                     script.resetGame();
-            }
+                    scoreScript.resetScore();
+                }
         }
     }
 
