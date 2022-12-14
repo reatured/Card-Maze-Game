@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
         if (canWalk)
         {
             onWalking();
+
         }
 
         if (Input.GetKeyDown("r")){
@@ -93,13 +94,14 @@ public class PlayerMovement : MonoBehaviour
 
         if(journeyTime > 1)
         {
-            endWalk(); 
+            endWalk();
+            ScoreScript.counter = true; 
         }
     }
 
     public void endWalk()
     {
         canWalk = false;
-        ScoreScript.counter = true;
+        // ScoreScript.counter = true;
     }
 }

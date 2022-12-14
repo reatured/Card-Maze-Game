@@ -98,7 +98,7 @@ public class SerialCom : MonoBehaviour
                     script.startWalk(new Vector3(1, 0, 0));
                 } else if(curIndex == 5)
                     script.resetGame();
-                    scoreScript.resetScore();
+                    // scoreScript.resetScore();
                 }
         }
     }

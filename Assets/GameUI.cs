@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class GameUI : MonoBehaviour
 {
+    public GameObject Timer;
+    private TimerScript scriptTimer;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,8 @@ public class GameUI : MonoBehaviour
         {
             winMenuItems[i].SetActive(false);
         }
+
+        scriptTimer = Timer.GetComponent<TimerScript>();
     }
 
     // Update is called once per frame
@@ -46,6 +50,7 @@ public class GameUI : MonoBehaviour
         }
         startingGameState = true;
         print("start game");
+        scriptTimer.timerIsRunning = true;
     }
 
     public Volume menuEffectVolume;
